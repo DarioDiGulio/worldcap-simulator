@@ -2,6 +2,7 @@ import { Country } from '../models/Country'
 
 export class AppVM {
     eightFinal: Map<string, BattleFinal> = new Map()
+    cuarterFinal: Map<string, BattleFinal> = new Map()
 }
 
 export interface AppView {

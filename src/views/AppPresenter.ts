@@ -7,7 +7,7 @@ export class AppPresenter {
     constructor(private view: AppView) {
     }
 
-    selectFirst(countryName: string, groupName: string) {
+    selectFirstEight(countryName: string, groupName: string) {
         let second = undefined
         if (this.model.eightFinal.get(groupName) !== undefined) {
             second = this.model.eightFinal.get(groupName)!!.second
@@ -16,7 +16,7 @@ export class AppPresenter {
         this.set({ eightFinal: this.model.eightFinal })
     }
 
-    selectSecond(countryName: string, groupName: string) {
+    selectSecondEight(countryName: string, groupName: string) {
         let first = undefined
         if (this.model.eightFinal.get(groupName) !== undefined) {
             first = this.model.eightFinal.get(groupName)!!.first
