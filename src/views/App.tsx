@@ -17,7 +17,7 @@ export const App: React.FC = () => {
             [
                 new Country('🏴󠁧󠁢󠁥󠁮󠁧󠁿 Inglaterra'),
                 new Country('🇮🇷 Irán'),
-                new Country('🇺🇸 Estados Unidos'),
+                new Country('🇺🇸 EE.UU.'),
                 new Country('🏴󠁧󠁢󠁷󠁬󠁳󠁿 Gales'),
             ]
         }/>
@@ -25,7 +25,7 @@ export const App: React.FC = () => {
             [
                 new Country('🇦🇷 Argentina'),
                 new Country('🇲🇽 México'),
-                new Country('🇸🇦 Arabia Saudita'),
+                new Country('🇸🇦 A. Saudita'),
                 new Country('🇵🇱 Polonia'),
             ]
         }/>
@@ -66,7 +66,7 @@ export const App: React.FC = () => {
                 new Country('🇵🇹 Portugal'),
                 new Country('🇬🇭 Ghana'),
                 new Country('🇺🇾 Uruguay'),
-                new Country('🇰🇷 República de Corea'),
+                new Country('🇰🇷 R. de Corea'),
             ]
         }/>
     </Groups>

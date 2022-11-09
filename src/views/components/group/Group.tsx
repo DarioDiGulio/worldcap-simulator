@@ -63,6 +63,11 @@ const Row = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  
+  p {
+    width: 40%;
+    text-align: left;
+  }
 `
 
 interface Props {
