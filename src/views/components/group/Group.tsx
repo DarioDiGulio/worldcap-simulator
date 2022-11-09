@@ -12,11 +12,19 @@ export class Group extends React.Component<Props, any> implements GroupView {
     }
 
     modelChanged(model: GroupVM): void {
-        this.setState({ model })
+        this.setState({model})
     }
 
-    async componentDidMount() {
-        await this.presenter.start()
+    componentDidMount() {
+        this.presenter.start()
+    }
+
+    onSelectFirst(countryName: string) {
+        this.props.selectFirst(countryName)
+    }
+
+    onSelectSecond(countryName: string) {
+        this.props.selectSecond(countryName)
     }
 
     render() {
@@ -28,10 +36,20 @@ export class Group extends React.Component<Props, any> implements GroupView {
             </Header>
             {this.props.countries.map(country => {
                 return (
-                    <Row>
+                    <Row key={country.name}>
                         <p key={country.name}>{country.name}</p>
-                        <input type="radio" name={`first-${this.props.name}`} value={country.name}/>
-                        <input type="radio" name={`second-${this.props.name}`} value={country.name}/>
+                        <input
+                            type="radio"
+                            name={`first-${this.props.name}`}
+                            value={country.name}
+                            onInput={() => this.onSelectFirst(country.name)}
+                        />
+                        <input
+                            type="radio"
+                            name={`second-${this.props.name}`}
+                            value={country.name}
+                            onInput={() => this.onSelectSecond(country.name)}
+                        />
                     </Row>
                 )
             })}
@@ -63,7 +81,7 @@ const Row = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  
+
   p {
     width: 40%;
     text-align: left;
@@ -73,4 +91,6 @@ const Row = styled.div`
 interface Props {
     name: string
     countries: Country[]
+    selectFirst: (countryName: string) => void
+    selectSecond: (countryName: string) => void
 }

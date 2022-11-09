@@ -7,8 +7,7 @@ export class GroupPresenter {
     constructor(private view: GroupView) {
     }
 
-    async start() {
-    }
+    start() {}
 
     selectFirst(countryName: string) {
         this.set({first: new Country(countryName)})
