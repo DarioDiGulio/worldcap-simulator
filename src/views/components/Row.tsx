@@ -5,9 +5,21 @@ import { Country } from '../../models/Country'
 export const Row: React.FC<Props> = (props) => {
     if (props.left === undefined && props.right === undefined) return null
     return <Container>
-        <div>{props.left && props.left.name}</div>
+        <div
+            onClick={() => {
+                if (!props.left) return
+                props.selectWinner(props.left.name)
+            }}>
+            {props.left && props.left.name}
+        </div>
         <p>vs</p>
-        <div>{props.right && props.right.name}</div>
+        <div
+            onClick={() => {
+                if (!props.right) return
+                props.selectWinner(props.right.name)
+            }}>
+            {props.right && props.right.name}
+        </div>
     </Container>
 }
 
@@ -18,11 +30,11 @@ const Container = styled.div`
   align-items: center;
   padding: 5px;
   border-top: 1px solid rgba(213, 213, 213, .2);
-  
+
   div {
     width: 40%;
   }
-  
+
   div:first-child {
     text-align: left;
   }
@@ -35,4 +47,5 @@ const Container = styled.div`
 interface Props {
     left: Country | undefined
     right: Country | undefined
+    selectWinner: (winner: string) => void
 }

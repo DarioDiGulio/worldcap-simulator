@@ -12,8 +12,8 @@ export class AppPresenter {
         if (this.model.eightFinal.get(groupName) !== undefined) {
             second = this.model.eightFinal.get(groupName)!!.second
         }
-        this.model.eightFinal.set(groupName, { first: new Country(countryName), second })
-        this.set({ eightFinal: this.model.eightFinal })
+        this.model.eightFinal.set(groupName, {first: new Country(countryName), second})
+        this.set({eightFinal: this.model.eightFinal})
     }
 
     selectSecondEight(countryName: string, groupName: string) {
@@ -21,8 +21,13 @@ export class AppPresenter {
         if (this.model.eightFinal.get(groupName) !== undefined) {
             first = this.model.eightFinal.get(groupName)!!.first
         }
-        this.model.eightFinal.set(groupName, { first, second: new Country(countryName) })
-        this.set({ eightFinal: this.model.eightFinal })
+        this.model.eightFinal.set(groupName, {first, second: new Country(countryName)})
+        this.set({eightFinal: this.model.eightFinal})
+    }
+
+    addCuarterWinner(countryName: string, id: string) {
+        this.model.cuarterFinal.set(id, new Country(countryName))
+        this.set({cuarterFinal: this.model.cuarterFinal})
     }
 
     set<K extends keyof AppVM>(changes: Pick<AppVM, K>) {
