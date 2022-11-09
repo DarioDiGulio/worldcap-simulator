@@ -136,13 +136,17 @@ export class App extends React.Component implements AppView {
                 <Row left={model.eightFinal.get('D')?.first} right={model.eightFinal.get('C')?.second}/>
                 <Row left={model.eightFinal.get('F')?.first} right={model.eightFinal.get('E')?.second}/>
                 <Row left={model.eightFinal.get('H')?.first} right={model.eightFinal.get('G')?.second}/>
-
             </Container>
         )
     }
 }
 
 const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
   h2 {
     text-align: center;
   }
