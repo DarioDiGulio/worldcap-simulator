@@ -1,13 +1,11 @@
-import { Group } from './components/group/Group'
 import { Country } from '../models/Country'
 import React from 'react'
 import styled from 'styled-components'
 import { Row } from './components/Row'
 import AppContext from '../infrastructure/AppContext'
 import { AppView, AppVM, Classifieds } from './AppView'
-import { groups } from '../resourses'
 import Swal from 'sweetalert'
-
+import { Groups } from './phases/Groups'
 
 export class App extends React.Component implements AppView {
     presenter = AppContext.presenters.app(this)
@@ -26,25 +24,6 @@ export class App extends React.Component implements AppView {
             icon: 'success',
             buttons: [ false, false ]
         })
-    }
-
-    private renderGroups(): React.ReactNode {
-        return <>
-            <h2>Fase de Grupos</h2>
-            <Groups>
-                {
-                    groups.map(group => {
-                        return <Group
-                            key={ group.name }
-                            name={ group.name }
-                            countries={ group.teams.map(team => new Country(team.name, team.flag)) }
-                            selectFirst={ (country) => this.presenter.selectFirstGroupRound(country, group.name) }
-                            selectSecond={ (country) => this.presenter.selectSecondGroupRound(country, group.name) }
-                        />
-                    })
-                }
-            </Groups>
-        </>
     }
 
     private renderSixteenRound(round: Map<string, Classifieds>): React.ReactNode {
@@ -202,7 +181,7 @@ export class App extends React.Component implements AppView {
         const model = this.state.model
         return (
             <Container>
-                { this.renderGroups() }
+                <Groups />
                 { this.renderSixteenRound(model.sixteenRound) }
                 { this.renderQuarterFinals(model.quarterFinal) }
                 { this.renderSemiFinal(model.semiFinal) }
@@ -222,10 +201,4 @@ const Container = styled.div`
   h2 {
     text-align: center;
   }
-`
-
-const Groups = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
 `

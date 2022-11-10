@@ -1,26 +1,34 @@
 import { AppView, AppVM } from './AppView'
 import { Country } from '../models/Country'
+import { EventBus, Event } from '../base/eventBus/EventBus'
+import { FirstCountryFromGroupSelected } from '../infrastructure/events/FirstCountryFromGroupSelected'
+import { SecondCountryFromGroupSelected } from '../infrastructure/events/SecondCountryFromGroupSelected'
 
 export class AppPresenter {
     private model = new AppVM()
 
-    constructor(private view: AppView) {}
+    constructor(private view: AppView, eventBus: EventBus) {
+        eventBus.subscribe(this, FirstCountryFromGroupSelected, this.onFirstCountryFromGroupSelected.bind(this))
+        eventBus.subscribe(this, SecondCountryFromGroupSelected, this.onSecondCountryFromGroupSelected.bind(this))
+    }
 
-    selectFirstGroupRound(country: Country, groupName: string) {
+    private onFirstCountryFromGroupSelected(event: Event) {
+        const currentEvent = event as FirstCountryFromGroupSelected
         let second = undefined
-        if (this.model.sixteenRound.get(groupName) !== undefined) {
-            second = this.model.sixteenRound.get(groupName)!!.second
+        if (this.model.sixteenRound.get(currentEvent.groupName) !== undefined) {
+            second = this.model.sixteenRound.get(currentEvent.groupName)!!.second
         }
-        this.model.sixteenRound.set(groupName, {first: country, second})
+        this.model.sixteenRound.set(currentEvent.groupName, {first: currentEvent.country, second})
         this.set({sixteenRound: this.model.sixteenRound})
     }
 
-    selectSecondGroupRound(country: Country, groupName: string) {
+    private onSecondCountryFromGroupSelected(event: Event) {
+        const currentEvent = event as SecondCountryFromGroupSelected
         let first = undefined
-        if (this.model.sixteenRound.get(groupName) !== undefined) {
-            first = this.model.sixteenRound.get(groupName)!!.first
+        if (this.model.sixteenRound.get(currentEvent.groupName) !== undefined) {
+            first = this.model.sixteenRound.get(currentEvent.groupName)!!.first
         }
-        this.model.sixteenRound.set(groupName, {first, second: country})
+        this.model.sixteenRound.set(currentEvent.groupName, {first, second: currentEvent.country})
         this.set({sixteenRound: this.model.sixteenRound})
     }
 

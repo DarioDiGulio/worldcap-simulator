@@ -24,12 +24,12 @@ export class EventBus {
         this.handlers.set(eventClass, new Array<ObserverHandler>());
     }
 
-    async post(event: Event) {
+    post(event: Event) {
         for (const eventClass of this.subscribedEvents()) {
             if (!(event instanceof eventClass)) { continue; }
 
             for (const observerHandler of this.eventObserverHandlers(eventClass)) {
-                await observerHandler.handler(event);
+                observerHandler.handler(event);
             }
         }
     }
@@ -45,11 +45,6 @@ export class EventBus {
     unsubscribe(observer: object) {
         this.observers.delete(observer);
         this.removeObserverFromAllEvents(observer);
-    }
-
-    unsubscribeAll() {
-        this.observers.clear();
-        this.handlers.clear();
     }
 
     private removeObserverFromAllEvents(observer: any) {
