@@ -7,31 +7,31 @@ export class AppPresenter {
     constructor(private view: AppView) {
     }
 
-    selectFirstEight(countryName: string, groupName: string) {
+    selectFirstEight(country: Country, groupName: string) {
         let second = undefined
         if (this.model.eightFinal.get(groupName) !== undefined) {
             second = this.model.eightFinal.get(groupName)!!.second
         }
-        this.model.eightFinal.set(groupName, {first: new Country(countryName), second})
+        this.model.eightFinal.set(groupName, {first: country, second})
         this.set({eightFinal: this.model.eightFinal})
     }
 
-    selectSecondEight(countryName: string, groupName: string) {
+    selectSecondEight(country: Country, groupName: string) {
         let first = undefined
         if (this.model.eightFinal.get(groupName) !== undefined) {
             first = this.model.eightFinal.get(groupName)!!.first
         }
-        this.model.eightFinal.set(groupName, {first, second: new Country(countryName)})
+        this.model.eightFinal.set(groupName, {first, second: country})
         this.set({eightFinal: this.model.eightFinal})
     }
 
-    addCuarterWinner(countryName: string, id: string) {
-        this.model.cuarterFinal.set(id, new Country(countryName))
+    addCuarterWinner(country: Country, id: string) {
+        this.model.cuarterFinal.set(id, country)
         this.set({cuarterFinal: this.model.cuarterFinal})
     }
 
-    addSemiWinner(countryName: string, id: string) {
-        this.model.semiFinal.set(id, new Country(countryName))
+    addSemiWinner(country: Country, id: string) {
+        this.model.semiFinal.set(id, country)
         this.set({semiFinal: this.model.semiFinal})
     }
 

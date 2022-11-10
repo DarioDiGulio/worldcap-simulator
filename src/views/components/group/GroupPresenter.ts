@@ -9,12 +9,12 @@ export class GroupPresenter {
 
     start() {}
 
-    selectFirst(countryName: string) {
-        this.set({first: new Country(countryName)})
+    selectFirst(country: Country) {
+        this.set({first: country})
     }
 
-    selectSecond(countryName: string) {
-        this.set({second: new Country(countryName)})
+    selectSecond(country: Country) {
+        this.set({second: country})
     }
 
     set<K extends keyof GroupVM>(changes: Pick<GroupVM, K>) {

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Country } from '../../models/Country'
 import classNames from 'classnames'
+import { Direction } from '../../models/Direction'
 
 export const Row: React.FC<Props> = (props) => {
     const [ isLeftSelected, setIsLeftSelected ] = useState(false)
@@ -12,25 +13,25 @@ export const Row: React.FC<Props> = (props) => {
         <div
             onClick={ () => {
                 if (!props.left) return
-                props.selectWinner(props.left.name)
+                props.selectWinner(props.left)
                 setIsLeftSelected(!isLeftSelected)
                 setIsRightSelected(false)
             } }
             className={ classNames({ selected: isLeftSelected }) }
         >
-            { props.left && props.left.name }
+            { props.left && props.left.fullNameOriented() }
         </div>
         <p>vs</p>
         <div
             onClick={ () => {
                 if (!props.right) return
-                props.selectWinner(props.right.name)
+                props.selectWinner(props.right)
                 setIsRightSelected(!isRightSelected)
                 setIsLeftSelected(false)
             } }
             className={ classNames({ selected: isRightSelected }) }
         >
-            { props.right && props.right.name }
+            { props.right && props.right.fullNameOriented(Direction.right) }
         </div>
     </Container>
 }
@@ -66,5 +67,5 @@ const Container = styled.div`
 interface Props {
     left: Country | undefined
     right: Country | undefined
-    selectWinner: (winner: string) => void
+    selectWinner: (country: Country) => void
 }

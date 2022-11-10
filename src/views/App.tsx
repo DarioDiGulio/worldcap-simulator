@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { Row } from './components/Row'
 import AppContext from '../infrastructure/AppContext'
 import { AppView, AppVM } from './AppView'
+import { groups } from '../resourses'
 
 export class App extends React.Component implements AppView {
     presenter = AppContext.presenters.app(this)
@@ -21,101 +22,17 @@ export class App extends React.Component implements AppView {
         return <>
             <h2>Fase de Grupos</h2>
             <Groups>
-                <Group
-                    selectFirst={ (countryName) => this.presenter.selectFirstEight(countryName, 'A') }
-                    selectSecond={ (countryName) => this.presenter.selectSecondEight(countryName, 'A') }
-                    name="A" countries={
-                    [
-                        new Country('🇶🇦 Qatar'),
-                        new Country('🇪🇨 Ecuador'),
-                        new Country('🇸🇳 Senegal'),
-                        new Country('🇳🇱 Holanda'),
-                    ]
-                }/>
-                <Group
-                    selectFirst={ (countryName) => this.presenter.selectFirstEight(countryName, 'B') }
-                    selectSecond={ (countryName) => this.presenter.selectSecondEight(countryName, 'B') }
-                    name="B"
-                    countries={
-                        [
-                            new Country('🏴󠁧󠁢󠁥󠁮󠁧󠁿 Inglaterra'),
-                            new Country('🇮🇷 Irán'),
-                            new Country('🇺🇸 EE.UU.'),
-                            new Country('🏴󠁧󠁢󠁷󠁬󠁳󠁿 Gales'),
-                        ]
-                    }/>
-                <Group
-                    selectFirst={ (countryName) => this.presenter.selectFirstEight(countryName, 'C') }
-                    selectSecond={ (countryName) => this.presenter.selectSecondEight(countryName, 'C') }
-                    name="C"
-                    countries={
-                        [
-                            new Country('🇦🇷 Argentina'),
-                            new Country('🇲🇽 México'),
-                            new Country('🇸🇦 A. Saudita'),
-                            new Country('🇵🇱 Polonia'),
-                        ]
-                    }/>
-                <Group
-                    selectFirst={ (countryName) => this.presenter.selectFirstEight(countryName, 'D') }
-                    selectSecond={ (countryName) => this.presenter.selectSecondEight(countryName, 'D') }
-                    name="D"
-                    countries={
-                        [
-                            new Country('🇫🇷 Francia'),
-                            new Country('🇦🇺 Australia'),
-                            new Country('🇩🇰 Dinamarca'),
-                            new Country('🇹🇳 Túnez'),
-                        ]
-                    }/>
-                <Group
-                    selectFirst={ (countryName) => this.presenter.selectFirstEight(countryName, 'E') }
-                    selectSecond={ (countryName) => this.presenter.selectSecondEight(countryName, 'E') }
-                    name="E"
-                    countries={
-                        [
-                            new Country('🇪🇸 España'),
-                            new Country('🇨🇷 Costa Rica'),
-                            new Country('🇩🇪 Alemania'),
-                            new Country('🇯🇵 Japón'),
-                        ]
-                    }/>
-                <Group
-                    selectFirst={ (countryName) => this.presenter.selectFirstEight(countryName, 'F') }
-                    selectSecond={ (countryName) => this.presenter.selectSecondEight(countryName, 'F') }
-                    name="F"
-                    countries={
-                        [
-                            new Country('🇧🇪 Bélgica'),
-                            new Country('🇨🇦 Canadá'),
-                            new Country('🇲🇦 Marruecos'),
-                            new Country('🇭🇷 Croacia'),
-                        ]
-                    }/>
-                <Group
-                    selectFirst={ (countryName) => this.presenter.selectFirstEight(countryName, 'G') }
-                    selectSecond={ (countryName) => this.presenter.selectSecondEight(countryName, 'G') }
-                    name="G"
-                    countries={
-                        [
-                            new Country('🇧🇷 Brasil'),
-                            new Country('🇷🇸 Serbia'),
-                            new Country('🇨🇭 Suiza'),
-                            new Country('🇨🇲 Camerún'),
-                        ]
-                    }/>
-                <Group
-                    selectFirst={ (countryName) => this.presenter.selectFirstEight(countryName, 'H') }
-                    selectSecond={ (countryName) => this.presenter.selectSecondEight(countryName, 'H') }
-                    name="H"
-                    countries={
-                        [
-                            new Country('🇵🇹 Portugal'),
-                            new Country('🇬🇭 Ghana'),
-                            new Country('🇺🇾 Uruguay'),
-                            new Country('🇰🇷 R. de Corea'),
-                        ]
-                    }/>
+                {
+                    groups.map(group => {
+                        return <Group
+                            key={group.name}
+                            name={group.name}
+                            countries={group.teams.map(team => new Country(team.name, team.flag))}
+                            selectFirst={ (country) => this.presenter.selectFirstEight(country, group.name) }
+                            selectSecond={ (country) => this.presenter.selectSecondEight(country, group.name) }
+                        />
+                    })
+                }
             </Groups>
         </>
     }

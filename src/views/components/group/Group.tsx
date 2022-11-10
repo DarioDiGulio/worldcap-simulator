@@ -19,14 +19,6 @@ export class Group extends React.Component<Props, any> implements GroupView {
         this.presenter.start()
     }
 
-    onSelectFirst(countryName: string) {
-        this.props.selectFirst(countryName)
-    }
-
-    onSelectSecond(countryName: string) {
-        this.props.selectSecond(countryName)
-    }
-
     render() {
         return <Table>
             <Header>
@@ -37,18 +29,18 @@ export class Group extends React.Component<Props, any> implements GroupView {
             {this.props.countries.map(country => {
                 return (
                     <Row key={country.name}>
-                        <p key={country.name}>{country.name}</p>
+                        <p key={country.name}>{country.fullNameOriented()}</p>
                         <input
                             type="radio"
                             name={`first-${this.props.name}`}
                             value={country.name}
-                            onInput={() => this.onSelectFirst(country.name)}
+                            onInput={() => this.props.selectFirst(country)}
                         />
                         <input
                             type="radio"
                             name={`second-${this.props.name}`}
                             value={country.name}
-                            onInput={() => this.onSelectSecond(country.name)}
+                            onInput={() => this.props.selectSecond(country)}
                         />
                     </Row>
                 )
@@ -91,6 +83,6 @@ const Row = styled.div`
 interface Props {
     name: string
     countries: Country[]
-    selectFirst: (countryName: string) => void
-    selectSecond: (countryName: string) => void
+    selectFirst: (country: Country) => void
+    selectSecond: (country: Country) => void
 }
