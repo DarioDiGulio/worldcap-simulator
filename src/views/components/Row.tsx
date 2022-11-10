@@ -16,6 +16,7 @@ export const Row: React.FC<Props> = (props) => {
                 props.selectWinner(props.left)
                 setIsLeftSelected(!isLeftSelected)
                 setIsRightSelected(false)
+                if (props.selectLooser && props.right) props.selectLooser(props.right)
             } }
             className={ classNames({ selected: isLeftSelected }) }
         >
@@ -28,6 +29,7 @@ export const Row: React.FC<Props> = (props) => {
                 props.selectWinner(props.right)
                 setIsRightSelected(!isRightSelected)
                 setIsLeftSelected(false)
+                if (props.selectLooser && props.left) props.selectLooser(props.left)
             } }
             className={ classNames({ selected: isRightSelected }) }
         >
@@ -68,4 +70,5 @@ interface Props {
     left: Country | undefined
     right: Country | undefined
     selectWinner: (country: Country) => void
+    selectLooser?: (country: Country) => void
 }

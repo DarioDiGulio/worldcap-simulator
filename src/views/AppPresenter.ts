@@ -39,8 +39,8 @@ export class AppPresenter {
         this.set({ final: this.model.final })
     }
 
-    addSemiFinalLooser(country: Country) {
-        this.model.third.set('THIRD', country)
+    addSemiFinalLooser(country: Country, id: string) {
+        this.model.third.set(id, country)
         this.set({ third: this.model.third })
     }
 
