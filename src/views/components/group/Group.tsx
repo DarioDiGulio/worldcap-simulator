@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Country } from '../../../models/Country'
 import { GroupView, GroupVM } from './GroupView'
 import AppContext from '../../../infrastructure/AppContext'
+import { Radio } from '../Radio'
 
 export class Group extends React.Component<Props, any> implements GroupView {
     presenter = AppContext.presenters.group(this)
@@ -30,16 +31,12 @@ export class Group extends React.Component<Props, any> implements GroupView {
                 return (
                     <Row key={country.name}>
                         <p key={country.name}>{country.fullNameOriented()}</p>
-                        <input
-                            type="radio"
+                        <Radio
                             name={`first-${this.props.name}`}
-                            value={country.name}
                             onInput={() => this.props.selectFirst(country)}
                         />
-                        <input
-                            type="radio"
+                        <Radio
                             name={`second-${this.props.name}`}
-                            value={country.name}
                             onInput={() => this.props.selectSecond(country)}
                         />
                     </Row>

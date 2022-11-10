@@ -25,9 +25,9 @@ export class App extends React.Component implements AppView {
                 {
                     groups.map(group => {
                         return <Group
-                            key={group.name}
-                            name={group.name}
-                            countries={group.teams.map(team => new Country(team.name, team.flag))}
+                            key={ group.name }
+                            name={ group.name }
+                            countries={ group.teams.map(team => new Country(team.name, team.flag)) }
                             selectFirst={ (country) => this.presenter.selectFirstEight(country, group.name) }
                             selectSecond={ (country) => this.presenter.selectSecondEight(country, group.name) }
                         />
