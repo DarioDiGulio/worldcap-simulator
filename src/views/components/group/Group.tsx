@@ -29,7 +29,7 @@ export class Group extends React.Component<Props, any> implements GroupView {
             </Header>
             {this.props.countries.map(country => {
                 return (
-                    <Row key={country.name}>
+                    <Team key={country.name}>
                         <p key={country.name}>{country.fullNameOriented()}</p>
                         <Radio
                             name={`first-${this.props.name}`}
@@ -39,7 +39,7 @@ export class Group extends React.Component<Props, any> implements GroupView {
                             name={`second-${this.props.name}`}
                             onInput={() => this.props.selectSecond(country)}
                         />
-                    </Row>
+                    </Team>
                 )
             })}
         </Table>
@@ -52,6 +52,10 @@ const Table = styled.div`
   border-radius: 10px;
   box-shadow: 5px 5px 10px -5px rgba(0, 0, 0, .7);
   margin: 25px 25px;
+  
+  p:first-child {
+    width: 40%;
+  }
 `
 
 const Header = styled.div`
@@ -63,7 +67,7 @@ const Header = styled.div`
   color: white;
 `
 
-const Row = styled.div`
+const Team = styled.div`
   border-top: 1px solid rgba(213, 213, 213, .2);
   margin: 1px;
   padding: 5px;

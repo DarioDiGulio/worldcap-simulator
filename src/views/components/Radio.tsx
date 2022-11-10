@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export const Radio: React.FC<Props> = (props) => {
     return <Container>
-        <Input type="radio" name={props.name} onInput={props.onInput}/>
+        <Input type="radio" name={ props.name } onInput={ props.onInput }/>
     </Container>
 }
 
@@ -14,8 +14,7 @@ const Container = styled.div`
 `
 
 enum StatusColors {
-    GREY = '#EEEBEB',
-    DARK_GREY_FADED = '#CFCFCF',
+    GREY = '#CFCFCF',
     DARK_GREY = '#A7A7A7',
 }
 
@@ -56,35 +55,10 @@ const Input = styled.input`
 
   :hover {
     ::after {
-      background-color: ${ StatusColors.DARK_GREY_FADED };
+      background-color: ${ StatusColors.GREY };
     }
   }
-
-  :disabled {
-    cursor: not-allowed;
-    border: 2px solid ${ StatusColors.DARK_GREY_FADED };
-    background-color: ${ StatusColors.GREY };
-
-    :hover {
-      ::after {
-        background-color: ${ StatusColors.GREY };
-      }
-    }
-
-    :checked {
-      ::after {
-        background-color: ${ StatusColors.DARK_GREY_FADED };
-      }
-
-      :hover {
-        background-color: ${ StatusColors.GREY };
-
-        ::after {
-          background-color: ${ StatusColors.DARK_GREY_FADED };
-        }
-      }
-    }
-  }
+}
 `
 
 interface Props {
