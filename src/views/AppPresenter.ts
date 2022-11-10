@@ -30,6 +30,11 @@ export class AppPresenter {
         this.set({cuarterFinal: this.model.cuarterFinal})
     }
 
+    addSemiWinner(countryName: string, id: string) {
+        this.model.semiFinal.set(id, new Country(countryName))
+        this.set({semiFinal: this.model.semiFinal})
+    }
+
     set<K extends keyof AppVM>(changes: Pick<AppVM, K>) {
         this.model = Object.assign(this.model, changes)
         this.view.modelChanged(this.model)
