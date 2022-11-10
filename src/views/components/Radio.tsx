@@ -14,9 +14,9 @@ const Container = styled.div`
 `
 
 enum StatusColors {
-    GREEN = '#EEEBEB',
-    DARK_GREEN_FADED = '#CFCFCF',
-    DARK_GREEN = '#A7A7A7',
+    GREY = '#EEEBEB',
+    DARK_GREY_FADED = '#CFCFCF',
+    DARK_GREY = '#A7A7A7',
 }
 
 const Input = styled.input`
@@ -26,7 +26,7 @@ const Input = styled.input`
   margin: 0;
   width: 1.5em;
   height: 1.5em;
-  border: 2px solid ${ StatusColors.DARK_GREEN };
+  border: 2px solid ${ StatusColors.DARK_GREY };
   border-radius: 50%;
   transition: all 0.1s ease-in-out;
 
@@ -41,46 +41,46 @@ const Input = styled.input`
 
   :checked {
     ::after {
-      background-color: ${ StatusColors.DARK_GREEN };
+      background-color: ${ StatusColors.DARK_GREY };
     }
 
     :hover {
       background-color: #FAFAFA;
-      border: 2px solid ${ StatusColors.DARK_GREEN };
+      border: 2px solid ${ StatusColors.DARK_GREY };
 
       ::after {
-        background-color: ${ StatusColors.DARK_GREEN };
+        background-color: ${ StatusColors.DARK_GREY };
       }
     }
   }
 
   :hover {
     ::after {
-      background-color: ${ StatusColors.DARK_GREEN_FADED };
+      background-color: ${ StatusColors.DARK_GREY_FADED };
     }
   }
 
   :disabled {
     cursor: not-allowed;
-    border: 2px solid ${ StatusColors.DARK_GREEN_FADED };
-    background-color: ${ StatusColors.GREEN };
+    border: 2px solid ${ StatusColors.DARK_GREY_FADED };
+    background-color: ${ StatusColors.GREY };
 
     :hover {
       ::after {
-        background-color: ${ StatusColors.GREEN };
+        background-color: ${ StatusColors.GREY };
       }
     }
 
     :checked {
       ::after {
-        background-color: ${ StatusColors.DARK_GREEN_FADED };
+        background-color: ${ StatusColors.DARK_GREY_FADED };
       }
 
       :hover {
-        background-color: ${ StatusColors.GREEN };
+        background-color: ${ StatusColors.GREY };
 
         ::after {
-          background-color: ${ StatusColors.DARK_GREEN_FADED };
+          background-color: ${ StatusColors.DARK_GREY_FADED };
         }
       }
     }
