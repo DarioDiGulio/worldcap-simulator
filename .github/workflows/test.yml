@@ -21,6 +21,5 @@ jobs:
             yarn.lock
       - name: Test web
         run: |
-          cd app
           yarn install
           yarn test
