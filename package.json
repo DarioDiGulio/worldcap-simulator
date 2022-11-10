@@ -1,10 +1,10 @@
 {
-  "name": "worldcap-simulator",
+  "name": "worldcup-simulator",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@types/jest": "^29.2.2",
-    "@types/node": "^16.18.3",
+    "@types/node": "^18.11.9",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.8",
     "@types/styled-components": "^5.1.26",
@@ -17,7 +17,7 @@
     "sweetalert": "^2.1.2",
     "sweetalert2": "^11.6.8",
     "typescript": "^4.8.4",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^3.0.4"
   },
   "scripts": {
     "start": "react-scripts start",
