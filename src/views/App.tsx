@@ -185,5 +185,4 @@ const Groups = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  padding: 0 200px;
 `
