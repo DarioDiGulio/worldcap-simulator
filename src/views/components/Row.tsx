@@ -47,7 +47,7 @@ const Container = styled.div`
   border-top: 1px solid rgba(213, 213, 213, .2);
 
   div {
-    width: 40%;
+    width: 80%;
     cursor: pointer;
     padding: 5px;
   }
