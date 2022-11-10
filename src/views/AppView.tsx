@@ -10,6 +10,7 @@ export class AppVM {
 
 export interface AppView {
     modelChanged(model: AppVM): void
+    alert(title: string, message: string): void
 }
 
 export interface Classifieds {

@@ -48,4 +48,8 @@ export class AppPresenter {
         this.model = Object.assign(this.model, changes)
         this.view.modelChanged(this.model)
     }
+
+    showChampion(winner: Country) {
+        this.view.alert(winner.fullNameOriented(), '¡Campeón del Mundo!')
+    }
 }

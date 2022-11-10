@@ -6,16 +6,26 @@ import { Row } from './components/Row'
 import AppContext from '../infrastructure/AppContext'
 import { AppView, AppVM, Classifieds } from './AppView'
 import { groups } from '../resourses'
+import Swal from 'sweetalert'
+
 
 export class App extends React.Component implements AppView {
     presenter = AppContext.presenters.app(this)
-
     state = {
         model: new AppVM()
     }
 
     modelChanged(model: AppVM): void {
         this.setState({ model })
+    }
+
+    alert(title: string, message: string): void {
+        Swal({
+            title: title,
+            text: message,
+            icon: 'success',
+            buttons: [ false, false ]
+        })
     }
 
     private renderGroups(): React.ReactNode {
@@ -169,7 +179,8 @@ export class App extends React.Component implements AppView {
             <Row
                 left={ round.get('FINAL-LEFT') }
                 right={ round.get('FINAL-RIGHT') }
-                selectWinner={ () => {
+                selectWinner={ winner => {
+                    this.presenter.showChampion(winner)
                 } }
             />
         </>
@@ -182,8 +193,7 @@ export class App extends React.Component implements AppView {
             <Row
                 left={ round.get('THIRD-LEFT') }
                 right={ round.get('THIRD-RIGHT') }
-                selectWinner={ () => {
-                } }
+                selectWinner={ () => {} }
             />
         </>
     }
