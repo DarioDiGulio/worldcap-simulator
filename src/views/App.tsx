@@ -12,8 +12,9 @@ export class App extends React.Component implements AppView {
     state = {
         model: new AppVM()
     }
+
     modelChanged(model: AppVM): void {
-        this.setState({model})
+        this.setState({ model })
     }
 
     private renderGroups(): React.ReactNode {
@@ -21,8 +22,8 @@ export class App extends React.Component implements AppView {
             <h2>Fase de Grupos</h2>
             <Groups>
                 <Group
-                    selectFirst={(countryName) => this.presenter.selectFirstEight(countryName, 'A')}
-                    selectSecond={(countryName) => this.presenter.selectSecondEight(countryName, 'A')}
+                    selectFirst={ (countryName) => this.presenter.selectFirstEight(countryName, 'A') }
+                    selectSecond={ (countryName) => this.presenter.selectSecondEight(countryName, 'A') }
                     name="A" countries={
                     [
                         new Country('🇶🇦 Qatar'),
@@ -32,8 +33,8 @@ export class App extends React.Component implements AppView {
                     ]
                 }/>
                 <Group
-                    selectFirst={(countryName) => this.presenter.selectFirstEight(countryName, 'B')}
-                    selectSecond={(countryName) => this.presenter.selectSecondEight(countryName, 'B')}
+                    selectFirst={ (countryName) => this.presenter.selectFirstEight(countryName, 'B') }
+                    selectSecond={ (countryName) => this.presenter.selectSecondEight(countryName, 'B') }
                     name="B"
                     countries={
                         [
@@ -44,8 +45,8 @@ export class App extends React.Component implements AppView {
                         ]
                     }/>
                 <Group
-                    selectFirst={(countryName) => this.presenter.selectFirstEight(countryName, 'C')}
-                    selectSecond={(countryName) => this.presenter.selectSecondEight(countryName, 'C')}
+                    selectFirst={ (countryName) => this.presenter.selectFirstEight(countryName, 'C') }
+                    selectSecond={ (countryName) => this.presenter.selectSecondEight(countryName, 'C') }
                     name="C"
                     countries={
                         [
@@ -56,8 +57,8 @@ export class App extends React.Component implements AppView {
                         ]
                     }/>
                 <Group
-                    selectFirst={(countryName) => this.presenter.selectFirstEight(countryName, 'D')}
-                    selectSecond={(countryName) => this.presenter.selectSecondEight(countryName, 'D')}
+                    selectFirst={ (countryName) => this.presenter.selectFirstEight(countryName, 'D') }
+                    selectSecond={ (countryName) => this.presenter.selectSecondEight(countryName, 'D') }
                     name="D"
                     countries={
                         [
@@ -68,8 +69,8 @@ export class App extends React.Component implements AppView {
                         ]
                     }/>
                 <Group
-                    selectFirst={(countryName) => this.presenter.selectFirstEight(countryName, 'E')}
-                    selectSecond={(countryName) => this.presenter.selectSecondEight(countryName, 'E')}
+                    selectFirst={ (countryName) => this.presenter.selectFirstEight(countryName, 'E') }
+                    selectSecond={ (countryName) => this.presenter.selectSecondEight(countryName, 'E') }
                     name="E"
                     countries={
                         [
@@ -80,8 +81,8 @@ export class App extends React.Component implements AppView {
                         ]
                     }/>
                 <Group
-                    selectFirst={(countryName) => this.presenter.selectFirstEight(countryName, 'F')}
-                    selectSecond={(countryName) => this.presenter.selectSecondEight(countryName, 'F')}
+                    selectFirst={ (countryName) => this.presenter.selectFirstEight(countryName, 'F') }
+                    selectSecond={ (countryName) => this.presenter.selectSecondEight(countryName, 'F') }
                     name="F"
                     countries={
                         [
@@ -92,8 +93,8 @@ export class App extends React.Component implements AppView {
                         ]
                     }/>
                 <Group
-                    selectFirst={(countryName) => this.presenter.selectFirstEight(countryName, 'G')}
-                    selectSecond={(countryName) => this.presenter.selectSecondEight(countryName, 'G')}
+                    selectFirst={ (countryName) => this.presenter.selectFirstEight(countryName, 'G') }
+                    selectSecond={ (countryName) => this.presenter.selectSecondEight(countryName, 'G') }
                     name="G"
                     countries={
                         [
@@ -104,8 +105,8 @@ export class App extends React.Component implements AppView {
                         ]
                     }/>
                 <Group
-                    selectFirst={(countryName) => this.presenter.selectFirstEight(countryName, 'H')}
-                    selectSecond={(countryName) => this.presenter.selectSecondEight(countryName, 'H')}
+                    selectFirst={ (countryName) => this.presenter.selectFirstEight(countryName, 'H') }
+                    selectSecond={ (countryName) => this.presenter.selectSecondEight(countryName, 'H') }
                     name="H"
                     countries={
                         [
@@ -124,14 +125,62 @@ export class App extends React.Component implements AppView {
         if (fase.size === 0) return <></>
         return <>
             <h2>Octavos de Final</h2>
-            <Row selectWinner={(winner) => {this.presenter.addCuarterWinner(winner, 'FASB')}} left={fase.get('A')?.first} right={fase.get('B')?.second}/>
-            <Row selectWinner={(winner) => {this.presenter.addCuarterWinner(winner, 'FCSD')}} left={fase.get('C')?.first} right={fase.get('D')?.second}/>
-            <Row selectWinner={(winner) => {this.presenter.addCuarterWinner(winner, 'FESF')}} left={fase.get('E')?.first} right={fase.get('F')?.second}/>
-            <Row selectWinner={(winner) => {this.presenter.addCuarterWinner(winner, 'FGSH')}} left={fase.get('G')?.first} right={fase.get('H')?.second}/>
-            <Row selectWinner={(winner) => {this.presenter.addCuarterWinner(winner, 'FBSA')}} left={fase.get('B')?.first} right={fase.get('A')?.second}/>
-            <Row selectWinner={(winner) => {this.presenter.addCuarterWinner(winner, 'FDSC')}} left={fase.get('D')?.first} right={fase.get('C')?.second}/>
-            <Row selectWinner={(winner) => {this.presenter.addCuarterWinner(winner, 'FFSE')}} left={fase.get('F')?.first} right={fase.get('E')?.second}/>
-            <Row selectWinner={(winner) => {this.presenter.addCuarterWinner(winner, 'FHSG')}} left={fase.get('H')?.first} right={fase.get('G')?.second}/>
+            <Row
+                selectWinner={ (winner) => {
+                    this.presenter.addCuarterWinner(winner, 'FASB')
+                } }
+                left={ fase.get('A')?.first }
+                right={ fase.get('B')?.second }
+            />
+            <Row
+                selectWinner={ (winner) => {
+                    this.presenter.addCuarterWinner(winner, 'FCSD')
+                } }
+                left={ fase.get('C')?.first }
+                right={ fase.get('D')?.second }
+            />
+            <Row
+                selectWinner={ (winner) => {
+                    this.presenter.addCuarterWinner(winner, 'FESF')
+                } }
+                left={ fase.get('E')?.first }
+                right={ fase.get('F')?.second }
+            />
+            <Row
+                selectWinner={ (winner) => {
+                    this.presenter.addCuarterWinner(winner, 'FGSH')
+                } }
+                left={ fase.get('G')?.first }
+                right={ fase.get('H')?.second }
+            />
+            <Row
+                selectWinner={ (winner) => {
+                    this.presenter.addCuarterWinner(winner, 'FBSA')
+                } }
+                left={ fase.get('B')?.first }
+                right={ fase.get('A')?.second }
+            />
+            <Row
+                selectWinner={ (winner) => {
+                    this.presenter.addCuarterWinner(winner, 'FDSC')
+                } }
+                left={ fase.get('D')?.first }
+                right={ fase.get('C')?.second }
+            />
+            <Row
+                selectWinner={ (winner) => {
+                    this.presenter.addCuarterWinner(winner, 'FFSE')
+                } }
+                left={ fase.get('F')?.first }
+                right={ fase.get('E')?.second }
+            />
+            <Row
+                selectWinner={ (winner) => {
+                    this.presenter.addCuarterWinner(winner, 'FHSG')
+                } }
+                left={ fase.get('H')?.first }
+                right={ fase.get('G')?.second }
+            />
         </>
     }
 
@@ -140,10 +189,34 @@ export class App extends React.Component implements AppView {
         if (fase.size === 0) return <></>
         return <>
             <h2>Cuartos de Final</h2>
-            <Row left={fase.get('FASB')} right={fase.get('FCSD')} selectWinner={(winner) => { this.presenter.addSemiWinner(winner, 'A1') }} />
-            <Row left={fase.get('FESF')} right={fase.get('FGSH')} selectWinner={(winner) => { this.presenter.addSemiWinner(winner, 'A2') }} />
-            <Row left={fase.get('FBSA')} right={fase.get('FDSC')} selectWinner={(winner) => { this.presenter.addSemiWinner(winner, 'B1') }} />
-            <Row left={fase.get('FFSE')} right={fase.get('FHSG')} selectWinner={(winner) => { this.presenter.addSemiWinner(winner, 'B2') }} />
+            <Row
+                left={ fase.get('FASB') }
+                right={ fase.get('FCSD') }
+                selectWinner={ (winner) => {
+                    this.presenter.addSemiWinner(winner, 'A1')
+                } }
+            />
+            <Row
+                left={ fase.get('FESF') }
+                right={ fase.get('FGSH') }
+                selectWinner={ (winner) => {
+                    this.presenter.addSemiWinner(winner, 'A2')
+                } }
+            />
+            <Row
+                left={ fase.get('FBSA') }
+                right={ fase.get('FDSC') }
+                selectWinner={ (winner) => {
+                    this.presenter.addSemiWinner(winner, 'B1')
+                } }
+            />
+            <Row
+                left={ fase.get('FFSE') }
+                right={ fase.get('FHSG') }
+                selectWinner={ (winner) => {
+                    this.presenter.addSemiWinner(winner, 'B2')
+                } }
+            />
         </>
     }
 
@@ -152,8 +225,18 @@ export class App extends React.Component implements AppView {
         if (fase.size === 0) return <></>
         return <>
             <h2>Semi Final</h2>
-            <Row left={fase.get('A1')} right={fase.get('A2')} selectWinner={() => {}}/>
-            <Row left={fase.get('B1')} right={fase.get('B2')} selectWinner={() => {}}/>
+            <Row
+                left={ fase.get('A1') }
+                right={ fase.get('A2') }
+                selectWinner={ () => {
+                } }
+            />
+            <Row
+                left={ fase.get('B1') }
+                right={ fase.get('B2') }
+                selectWinner={ () => {
+                } }
+            />
         </>
     }
 
@@ -161,10 +244,10 @@ export class App extends React.Component implements AppView {
         const model = this.state.model
         return (
             <Container>
-                {this.renderGroups()}
-                {this.renderEightFinals(model)}
-                {this.renderCuarterFinals(model)}
-                {this.renderSemiFinal(model)}
+                { this.renderGroups() }
+                { this.renderEightFinals(model) }
+                { this.renderCuarterFinals(model) }
+                { this.renderSemiFinal(model) }
             </Container>
         )
     }
@@ -175,7 +258,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
+
   h2 {
     text-align: center;
   }

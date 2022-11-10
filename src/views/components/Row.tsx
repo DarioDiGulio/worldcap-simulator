@@ -10,27 +10,27 @@ export const Row: React.FC<Props> = (props) => {
     if (props.left === undefined && props.right === undefined) return null
     return <Container>
         <div
-            onClick={() => {
+            onClick={ () => {
                 if (!props.left) return
                 props.selectWinner(props.left.name)
                 setIsLeftSelected(!isLeftSelected)
                 setIsRightSelected(false)
-            }}
-            className={classNames({ selected: isLeftSelected })}
+            } }
+            className={ classNames({ selected: isLeftSelected }) }
         >
-            {props.left && props.left.name}
+            { props.left && props.left.name }
         </div>
         <p>vs</p>
         <div
-            onClick={() => {
+            onClick={ () => {
                 if (!props.right) return
                 props.selectWinner(props.right.name)
                 setIsRightSelected(!isRightSelected)
                 setIsLeftSelected(false)
-            }}
-            className={classNames({ selected: isRightSelected })}
+            } }
+            className={ classNames({ selected: isRightSelected }) }
         >
-            {props.right && props.right.name}
+            { props.right && props.right.name }
         </div>
     </Container>
 }
@@ -56,7 +56,7 @@ const Container = styled.div`
   div:last-child {
     text-align: right;
   }
-  
+
   div.selected {
     background-color: rgba(154, 255, 127, .2);
     transform: scale(1.2);
