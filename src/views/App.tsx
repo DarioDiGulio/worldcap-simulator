@@ -28,8 +28,8 @@ export class App extends React.Component implements AppView {
                             key={ group.name }
                             name={ group.name }
                             countries={ group.teams.map(team => new Country(team.name, team.flag)) }
-                            selectFirst={ (country) => this.presenter.selectFirstEight(country, group.name) }
-                            selectSecond={ (country) => this.presenter.selectSecondEight(country, group.name) }
+                            selectFirst={ (country) => this.presenter.selectFirstGroupRound(country, group.name) }
+                            selectSecond={ (country) => this.presenter.selectSecondGroupRound(country, group.name) }
                         />
                     })
                 }
@@ -37,122 +37,137 @@ export class App extends React.Component implements AppView {
         </>
     }
 
-    private renderEightFinals(model: AppVM): React.ReactNode {
-        const fase = model.eightFinal
-        if (fase.size === 0) return <></>
+    private renderSixteenRound(model: AppVM): React.ReactNode {
+        const round = model.sixteenRound
+        if (round.size === 0) return <></>
         return <>
             <h2>Octavos de Final</h2>
             <Row
                 selectWinner={ (winner) => {
-                    this.presenter.addCuarterWinner(winner, 'FASB')
+                    this.presenter.addSixteenRoundWinner(winner, 'FASB')
                 } }
-                left={ fase.get('A')?.first }
-                right={ fase.get('B')?.second }
+                left={ round.get('A')?.first }
+                right={ round.get('B')?.second }
             />
             <Row
                 selectWinner={ (winner) => {
-                    this.presenter.addCuarterWinner(winner, 'FCSD')
+                    this.presenter.addSixteenRoundWinner(winner, 'FCSD')
                 } }
-                left={ fase.get('C')?.first }
-                right={ fase.get('D')?.second }
+                left={ round.get('C')?.first }
+                right={ round.get('D')?.second }
             />
             <Row
                 selectWinner={ (winner) => {
-                    this.presenter.addCuarterWinner(winner, 'FESF')
+                    this.presenter.addSixteenRoundWinner(winner, 'FESF')
                 } }
-                left={ fase.get('E')?.first }
-                right={ fase.get('F')?.second }
+                left={ round.get('E')?.first }
+                right={ round.get('F')?.second }
             />
             <Row
                 selectWinner={ (winner) => {
-                    this.presenter.addCuarterWinner(winner, 'FGSH')
+                    this.presenter.addSixteenRoundWinner(winner, 'FGSH')
                 } }
-                left={ fase.get('G')?.first }
-                right={ fase.get('H')?.second }
+                left={ round.get('G')?.first }
+                right={ round.get('H')?.second }
             />
             <Row
                 selectWinner={ (winner) => {
-                    this.presenter.addCuarterWinner(winner, 'FBSA')
+                    this.presenter.addSixteenRoundWinner(winner, 'FBSA')
                 } }
-                left={ fase.get('B')?.first }
-                right={ fase.get('A')?.second }
+                left={ round.get('B')?.first }
+                right={ round.get('A')?.second }
             />
             <Row
                 selectWinner={ (winner) => {
-                    this.presenter.addCuarterWinner(winner, 'FDSC')
+                    this.presenter.addSixteenRoundWinner(winner, 'FDSC')
                 } }
-                left={ fase.get('D')?.first }
-                right={ fase.get('C')?.second }
+                left={ round.get('D')?.first }
+                right={ round.get('C')?.second }
             />
             <Row
                 selectWinner={ (winner) => {
-                    this.presenter.addCuarterWinner(winner, 'FFSE')
+                    this.presenter.addSixteenRoundWinner(winner, 'FFSE')
                 } }
-                left={ fase.get('F')?.first }
-                right={ fase.get('E')?.second }
+                left={ round.get('F')?.first }
+                right={ round.get('E')?.second }
             />
             <Row
                 selectWinner={ (winner) => {
-                    this.presenter.addCuarterWinner(winner, 'FHSG')
+                    this.presenter.addSixteenRoundWinner(winner, 'FHSG')
                 } }
-                left={ fase.get('H')?.first }
-                right={ fase.get('G')?.second }
+                left={ round.get('H')?.first }
+                right={ round.get('G')?.second }
             />
         </>
     }
 
-    private renderCuarterFinals(model: AppVM): React.ReactNode {
-        const fase = model.cuarterFinal
-        if (fase.size === 0) return <></>
+    private renderQuarterFinals(model: AppVM): React.ReactNode {
+        const round = model.quarterFinal
+        if (round.size === 0) return <></>
         return <>
             <h2>Cuartos de Final</h2>
             <Row
-                left={ fase.get('FASB') }
-                right={ fase.get('FCSD') }
+                left={ round.get('FASB') }
+                right={ round.get('FCSD') }
                 selectWinner={ (winner) => {
-                    this.presenter.addSemiWinner(winner, 'A1')
+                    this.presenter.addQuarterWinner(winner, 'A1')
                 } }
             />
             <Row
-                left={ fase.get('FESF') }
-                right={ fase.get('FGSH') }
+                left={ round.get('FESF') }
+                right={ round.get('FGSH') }
                 selectWinner={ (winner) => {
-                    this.presenter.addSemiWinner(winner, 'A2')
+                    this.presenter.addQuarterWinner(winner, 'A2')
                 } }
             />
             <Row
-                left={ fase.get('FBSA') }
-                right={ fase.get('FDSC') }
+                left={ round.get('FBSA') }
+                right={ round.get('FDSC') }
                 selectWinner={ (winner) => {
-                    this.presenter.addSemiWinner(winner, 'B1')
+                    this.presenter.addQuarterWinner(winner, 'B1')
                 } }
             />
             <Row
-                left={ fase.get('FFSE') }
-                right={ fase.get('FHSG') }
+                left={ round.get('FFSE') }
+                right={ round.get('FHSG') }
                 selectWinner={ (winner) => {
-                    this.presenter.addSemiWinner(winner, 'B2')
+                    this.presenter.addQuarterWinner(winner, 'B2')
                 } }
             />
         </>
     }
 
     private renderSemiFinal(model: AppVM): React.ReactNode {
-        const fase = model.semiFinal
-        if (fase.size === 0) return <></>
+        const round = model.semiFinal
+        if (round.size === 0) return <></>
         return <>
             <h2>Semi Final</h2>
             <Row
-                left={ fase.get('A1') }
-                right={ fase.get('A2') }
-                selectWinner={ () => {
+                left={ round.get('A1') }
+                right={ round.get('A2') }
+                selectWinner={ (winner) => {
+                    this.presenter.addSemiFinalWinner(winner, 'FINAL-LEFT')
                 } }
             />
             <Row
-                left={ fase.get('B1') }
-                right={ fase.get('B2') }
-                selectWinner={ () => {
+                left={ round.get('B1') }
+                right={ round.get('B2') }
+                selectWinner={ (winner) => {
+                    this.presenter.addSemiFinalWinner(winner, 'FINAL-RIGHT')
                 } }
+            />
+        </>
+    }
+
+    renderFinal(model: AppVM): React.ReactNode {
+        const round = model.final
+        if (round.size === 0) return <></>
+        return <>
+            <h2>Final</h2>
+            <Row
+                left={ round.get('FINAL-LEFT') }
+                right={ round.get('FINAL-RIGHT') }
+                selectWinner={() => {}}
             />
         </>
     }
@@ -162,9 +177,10 @@ export class App extends React.Component implements AppView {
         return (
             <Container>
                 { this.renderGroups() }
-                { this.renderEightFinals(model) }
-                { this.renderCuarterFinals(model) }
+                { this.renderSixteenRound(model) }
+                { this.renderQuarterFinals(model) }
                 { this.renderSemiFinal(model) }
+                { this.renderFinal(model) }
             </Container>
         )
     }

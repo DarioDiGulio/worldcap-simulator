@@ -4,35 +4,44 @@ import { Country } from '../models/Country'
 export class AppPresenter {
     private model = new AppVM()
 
-    constructor(private view: AppView) {
-    }
+    constructor(private view: AppView) {}
 
-    selectFirstEight(country: Country, groupName: string) {
+    selectFirstGroupRound(country: Country, groupName: string) {
         let second = undefined
-        if (this.model.eightFinal.get(groupName) !== undefined) {
-            second = this.model.eightFinal.get(groupName)!!.second
+        if (this.model.sixteenRound.get(groupName) !== undefined) {
+            second = this.model.sixteenRound.get(groupName)!!.second
         }
-        this.model.eightFinal.set(groupName, {first: country, second})
-        this.set({eightFinal: this.model.eightFinal})
+        this.model.sixteenRound.set(groupName, {first: country, second})
+        this.set({sixteenRound: this.model.sixteenRound})
     }
 
-    selectSecondEight(country: Country, groupName: string) {
+    selectSecondGroupRound(country: Country, groupName: string) {
         let first = undefined
-        if (this.model.eightFinal.get(groupName) !== undefined) {
-            first = this.model.eightFinal.get(groupName)!!.first
+        if (this.model.sixteenRound.get(groupName) !== undefined) {
+            first = this.model.sixteenRound.get(groupName)!!.first
         }
-        this.model.eightFinal.set(groupName, {first, second: country})
-        this.set({eightFinal: this.model.eightFinal})
+        this.model.sixteenRound.set(groupName, {first, second: country})
+        this.set({sixteenRound: this.model.sixteenRound})
     }
 
-    addCuarterWinner(country: Country, id: string) {
-        this.model.cuarterFinal.set(id, country)
-        this.set({cuarterFinal: this.model.cuarterFinal})
+    addSixteenRoundWinner(country: Country, id: string) {
+        this.model.quarterFinal.set(id, country)
+        this.set({quarterFinal: this.model.quarterFinal})
     }
 
-    addSemiWinner(country: Country, id: string) {
+    addQuarterWinner(country: Country, id: string) {
         this.model.semiFinal.set(id, country)
         this.set({semiFinal: this.model.semiFinal})
+    }
+
+    addSemiFinalWinner(country: Country, id: string) {
+        this.model.final.set(id, country)
+        this.set({ final: this.model.final })
+    }
+
+    addSemiFinalLooser(country: Country) {
+        this.model.third.set('THIRD', country)
+        this.set({ third: this.model.third })
     }
 
     set<K extends keyof AppVM>(changes: Pick<AppVM, K>) {
