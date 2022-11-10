@@ -22,5 +22,7 @@
     "target": "es5",
     "types": ["node", "jest"]
   },
-  "include": ["src", "test"]
+  "include": ["src",
+    "src/__test__"
+  ]
 }

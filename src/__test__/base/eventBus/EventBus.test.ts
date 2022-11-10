@@ -1,4 +1,4 @@
-import { EventBus, Event } from '../../../src/base/eventBus/EventBus'
+import { EventBus, Event } from '../../../base/eventBus/EventBus'
 
 it('notify an observer of an event when it\'s posted', async () => {
     eventBus.subscribe(observer, SampleEvent, handler)

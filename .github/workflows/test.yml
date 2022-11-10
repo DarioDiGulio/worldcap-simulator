@@ -1,0 +1,26 @@
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - src/**/*
+      - .github/workflows/test.yml
+
+jobs:
+  web-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'yarn'
+          cache-dependency-path: |
+            yarn.lock
+      - name: Test web
+        run: |
+          cd app
+          yarn install
+          yarn test
