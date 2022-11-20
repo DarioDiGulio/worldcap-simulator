@@ -58,6 +58,7 @@ const Container = styled.div`
 
   div {
     width: 80%;
+    min-width: 100px;
     cursor: pointer;
     padding: 5px;
   }
