@@ -5,7 +5,7 @@ import { Row } from './components/Row/Row'
 import AppContext from '../infrastructure/AppContext'
 import { AppView, AppVM, Classifieds } from './AppView'
 import Swal from 'sweetalert'
-import { Groups } from './phases/Groups'
+import { Groups } from './groups/Groups'
 
 export class App extends React.Component implements AppView {
     presenter = AppContext.presenters.app(this)

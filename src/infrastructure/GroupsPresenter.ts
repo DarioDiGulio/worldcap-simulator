@@ -1,4 +1,4 @@
-import { GroupsView } from '../views/phases/GroupsView'
+import { GroupsView } from '../views/groups/GroupsView'
 import { EventBus } from '../base/eventBus/EventBus'
 import { Country } from '../models/Country'
 import { FirstCountryFromGroupSelected } from './events/FirstCountryFromGroupSelected'
