@@ -10,6 +10,7 @@
 * TDD
 * EventBus
 * View-Presenter Pattern
+* CI/CD
 
 Try it [here](https://world-cup-simulator.netlify.app/)
 
