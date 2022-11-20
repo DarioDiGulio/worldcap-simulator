@@ -20,7 +20,7 @@ export const Row: React.FC<Props> = (props) => {
             } }
             className={ classNames({ selected: isLeftSelected }) }
         >
-            { props.left && props.left.fullNameOriented() }
+            { props.left && props.left.fullNameOriented() || props.leftEmpty }
         </div>
         <p>vs</p>
         <div
@@ -33,7 +33,7 @@ export const Row: React.FC<Props> = (props) => {
             } }
             className={ classNames({ selected: isRightSelected }) }
         >
-            { props.right && props.right.fullNameOriented(Direction.right) }
+            { props.right && props.right.fullNameOriented(Direction.right) || props.rightEmpty }
         </div>
     </Container>
 }
@@ -68,6 +68,8 @@ const Container = styled.div`
 
 interface Props {
     left: Country | undefined
+    leftEmpty?: string
+    rightEmpty?: string
     right: Country | undefined
     selectWinner: (country: Country) => void
     selectLooser?: (country: Country) => void

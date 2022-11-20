@@ -36,6 +36,8 @@ export class App extends React.Component implements AppView {
                 } }
                 left={ round.get('A')?.first }
                 right={ round.get('B')?.second }
+                leftEmpty='1º A'
+                rightEmpty='2º B'
             />
             <Row
                 selectWinner={ winner => {
@@ -43,6 +45,8 @@ export class App extends React.Component implements AppView {
                 } }
                 left={ round.get('C')?.first }
                 right={ round.get('D')?.second }
+                leftEmpty='1º C'
+                rightEmpty='2º D'
             />
             <Row
                 selectWinner={ winner => {
@@ -50,6 +54,8 @@ export class App extends React.Component implements AppView {
                 } }
                 left={ round.get('E')?.first }
                 right={ round.get('F')?.second }
+                leftEmpty='1º E'
+                rightEmpty='2º F'
             />
             <Row
                 selectWinner={ winner => {
@@ -57,6 +63,8 @@ export class App extends React.Component implements AppView {
                 } }
                 left={ round.get('G')?.first }
                 right={ round.get('H')?.second }
+                leftEmpty='1º G'
+                rightEmpty='2º H'
             />
             <Row
                 selectWinner={ winner => {
@@ -64,6 +72,8 @@ export class App extends React.Component implements AppView {
                 } }
                 left={ round.get('B')?.first }
                 right={ round.get('A')?.second }
+                leftEmpty='1º B'
+                rightEmpty='2º A'
             />
             <Row
                 selectWinner={ winner => {
@@ -71,6 +81,8 @@ export class App extends React.Component implements AppView {
                 } }
                 left={ round.get('D')?.first }
                 right={ round.get('C')?.second }
+                leftEmpty='1º D'
+                rightEmpty='2º C'
             />
             <Row
                 selectWinner={ winner => {
@@ -78,6 +90,8 @@ export class App extends React.Component implements AppView {
                 } }
                 left={ round.get('F')?.first }
                 right={ round.get('E')?.second }
+                leftEmpty='1º F'
+                rightEmpty='2º E'
             />
             <Row
                 selectWinner={ winner => {
@@ -85,6 +99,8 @@ export class App extends React.Component implements AppView {
                 } }
                 left={ round.get('H')?.first }
                 right={ round.get('G')?.second }
+                leftEmpty='1º H'
+                rightEmpty='2º G'
             />
         </>
     }
