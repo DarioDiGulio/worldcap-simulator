@@ -1,41 +1,43 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { Country } from '../../models/Country'
 import classNames from 'classnames'
 import { Direction } from '../../models/Direction'
 
-export const Row: React.FC<Props> = (props) => {
-    const [ isLeftSelected, setIsLeftSelected ] = useState(false)
-    const [ isRightSelected, setIsRightSelected ] = useState(false)
+export class Row extends React.Component<Props> {
+    state = {
+        isLeftSelected: false,
+        isRightSelected: false,
+    }
 
-    if (props.left === undefined && props.right === undefined) return null
-    return <Container>
-        <div
-            onClick={ () => {
-                if (!props.left) return
-                props.selectWinner(props.left)
-                setIsLeftSelected(!isLeftSelected)
-                setIsRightSelected(false)
-                if (props.selectLooser && props.right) props.selectLooser(props.right)
-            } }
-            className={ classNames({ selected: isLeftSelected }) }
-        >
-            { props.left && props.left.fullNameOriented() || props.leftEmpty }
-        </div>
-        <p>vs</p>
-        <div
-            onClick={ () => {
-                if (!props.right) return
-                props.selectWinner(props.right)
-                setIsRightSelected(!isRightSelected)
-                setIsLeftSelected(false)
-                if (props.selectLooser && props.left) props.selectLooser(props.left)
-            } }
-            className={ classNames({ selected: isRightSelected }) }
-        >
-            { props.right && props.right.fullNameOriented(Direction.right) || props.rightEmpty }
-        </div>
-    </Container>
+    render() {
+        if (this.props.left === undefined && this.props.right === undefined) return null
+        return <Container>
+            <div
+                onClick={ () => {
+                    if (!this.props.left) return
+                    this.props.selectWinner(this.props.left)
+                    this.setState({ isLeftSelected: !this.state.isLeftSelected, isRightSelected: false })
+                    if (this.props.selectLooser && this.props.right) this.props.selectLooser(this.props.right)
+                } }
+                className={ classNames({ selected: this.state.isLeftSelected }) }
+            >
+                { this.props.left && this.props.left.fullNameOriented() || this.props.leftEmpty }
+            </div>
+            <p>vs</p>
+            <div
+                onClick={ () => {
+                    if (!this.props.right) return
+                    this.props.selectWinner(this.props.right)
+                    this.setState({ isRightSelected: !this.state.isRightSelected, isLeftSelected: false })
+                    if (this.props.selectLooser && this.props.left) this.props.selectLooser(this.props.left)
+                } }
+                className={ classNames({ selected: this.state.isRightSelected }) }
+            >
+                { this.props.right && this.props.right.fullNameOriented(Direction.right) || this.props.rightEmpty }
+            </div>
+        </Container>
+    }
 }
 
 const Container = styled.div`
