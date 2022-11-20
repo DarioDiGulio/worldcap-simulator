@@ -9,6 +9,7 @@ import { Groups } from './phases/Groups'
 
 export class App extends React.Component implements AppView {
     presenter = AppContext.presenters.app(this)
+
     state = {
         model: new AppVM()
     }
@@ -24,6 +25,20 @@ export class App extends React.Component implements AppView {
             icon: 'success',
             buttons: [ false, false ]
         })
+    }
+
+    render() {
+        const model = this.state.model
+        return (
+            <Container>
+                <Groups />
+                { this.renderSixteenRound(model.sixteenRound) }
+                { this.renderQuarterFinals(model.quarterFinal) }
+                { this.renderSemiFinal(model.semiFinal) }
+                { this.renderThirdPhase(model.third) }
+                { this.renderFinal(model.final) }
+            </Container>
+        )
     }
 
     private renderSixteenRound(round: Map<string, Classifieds>): React.ReactNode {
@@ -167,7 +182,7 @@ export class App extends React.Component implements AppView {
         </>
     }
 
-    renderFinal(round: Map<string, Country>): React.ReactNode {
+    private renderFinal(round: Map<string, Country>): React.ReactNode {
         if (round.size === 0) return <></>
         return <>
             <h2>Final</h2>
@@ -191,20 +206,6 @@ export class App extends React.Component implements AppView {
                 selectWinner={ () => {} }
             />
         </>
-    }
-
-    render() {
-        const model = this.state.model
-        return (
-            <Container>
-                <Groups />
-                { this.renderSixteenRound(model.sixteenRound) }
-                { this.renderQuarterFinals(model.quarterFinal) }
-                { this.renderSemiFinal(model.semiFinal) }
-                { this.renderThirdPhase(model.third) }
-                { this.renderFinal(model.final) }
-            </Container>
-        )
     }
 }
 
