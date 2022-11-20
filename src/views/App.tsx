@@ -1,7 +1,7 @@
 import { Country } from '../models/Country'
 import React from 'react'
 import styled from 'styled-components'
-import { Row } from './components/Row'
+import { Row } from './components/Row/Row'
 import AppContext from '../infrastructure/AppContext'
 import { AppView, AppVM, Classifieds } from './AppView'
 import Swal from 'sweetalert'

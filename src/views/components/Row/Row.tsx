@@ -1,13 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Country } from '../../models/Country'
+import { Country } from '../../../models/Country'
 import classNames from 'classnames'
-import { Direction } from '../../models/Direction'
+import { Direction } from '../../../models/Direction'
+import { RowView } from './RowView'
+import { RowVM } from './RowVM'
+import AppContext from '../../../infrastructure/AppContext'
 
-export class Row extends React.Component<Props> {
+export class Row extends React.Component<Props> implements RowView {
+    presenter = AppContext.presenters.row(this)
+
     state = {
-        isLeftSelected: false,
-        isRightSelected: false,
+        model: new RowVM(),
+    }
+
+    modelChanged(model: RowVM): void {
+        this.setState({ model })
     }
 
     render() {
@@ -17,10 +25,10 @@ export class Row extends React.Component<Props> {
                 onClick={ () => {
                     if (!this.props.left) return
                     this.props.selectWinner(this.props.left)
-                    this.setState({ isLeftSelected: !this.state.isLeftSelected, isRightSelected: false })
+                    this.presenter.leftClicked()
                     if (this.props.selectLooser && this.props.right) this.props.selectLooser(this.props.right)
                 } }
-                className={ classNames({ selected: this.state.isLeftSelected }) }
+                className={ classNames({ selected: this.state.model.isLeftSelected }) }
             >
                 { this.props.left && this.props.left.fullNameOriented() || this.props.leftEmpty }
             </div>
@@ -29,10 +37,10 @@ export class Row extends React.Component<Props> {
                 onClick={ () => {
                     if (!this.props.right) return
                     this.props.selectWinner(this.props.right)
-                    this.setState({ isRightSelected: !this.state.isRightSelected, isLeftSelected: false })
+                    this.presenter.rightClicked()
                     if (this.props.selectLooser && this.props.left) this.props.selectLooser(this.props.left)
                 } }
-                className={ classNames({ selected: this.state.isRightSelected }) }
+                className={ classNames({ selected: this.state.model.isRightSelected }) }
             >
                 { this.props.right && this.props.right.fullNameOriented(Direction.right) || this.props.rightEmpty }
             </div>
